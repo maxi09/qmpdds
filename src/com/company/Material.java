@@ -1,5 +1,9 @@
 package com.company;
 
 public enum Material {
-  SEDA, ALGODON
+  ALGODON,
+  LINO,
+  POLIESTER,
+  PIQUE,
+  ACETATO
 }

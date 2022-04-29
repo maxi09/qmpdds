@@ -2,18 +2,40 @@ package com.company;
 
 public class Prenda {
   private TipoPrenda tipoPrenda;
-  private Categoria categoria;
-  private String colorPrincipal;
-  private String colorSecundario;
-  private Material material;
+  //private Categoria categoria;
+  private Color colorPrimario;
+  private Color colorSecundario;
+  private Material tipoMaterial;
 
-  public Prenda(TipoPrenda tipoPrenda, String colorPrincipal, Material material) {
-    if (tipoPrenda == null || material == null || colorPrincipal == null){
+  private Trama trama;
+
+  public Prenda(TipoPrenda tipoPrenda, Color colorPrimario, Material material, Trama trama) {
+    if (tipoPrenda == null || material == null || colorPrimario == null){
       throw new PrendaExcepcion("La prenda no esta completa");
     }
     this.tipoPrenda = tipoPrenda;
-    this.material = material;
-    this.colorPrincipal = colorPrincipal;
+    this.tipoMaterial = material;
+    this.colorPrimario = colorPrimario;
+    if(trama == null){
+      this.trama = Trama.LISO;
+    }else{
+      this.trama = trama;
+    }
+
+  }
+
+  public Prenda(TipoPrenda tipoPrenda, Color colorPrimario, Material tipoMaterial, Trama trama, Color colorSecundario) {
+    if(tipoPrenda == null || colorPrimario == null || tipoMaterial == null)
+      throw new PrendaExcepcion("La prenda no esta completa");
+    this.tipoPrenda = tipoPrenda;
+    this.colorPrimario = colorPrimario;
+    this.tipoMaterial = tipoMaterial;
+    if(trama == null){
+      this.trama = Trama.LISO;
+    }else{
+      this.trama = trama;
+    }
+    this.colorSecundario = colorSecundario;
   }
 
 
@@ -21,32 +43,28 @@ public class Prenda {
     return tipoPrenda;
   }
 
-  public Categoria getCategoria() {
-    return categoria;
+  public Categoria categoriaPrenda() {
+    return tipoPrenda.getCategoria();
   }
 
-  public void setCategoria(Categoria categoria) {
-    this.categoria = categoria;
+  public Color getColorPrimario() {
+    return colorPrimario;
   }
 
-  public String getColorPrincipal() {
-    return colorPrincipal;
-  }
-
-  public String getColorSecundario() {
+  public Color getColorSecundario() {
     return colorSecundario;
   }
 
-  public void setColorSecundario(String colorSecundario) {
+  public void setColorSecundario(Color colorSecundario) {
     this.colorSecundario = colorSecundario;
   }
 
   public Material getMaterial() {
-    return material;
+    return tipoMaterial;
   }
 
   public void setMaterial(Material material) {
-    this.material = material;
+    this.tipoMaterial = material;
   }
 
 
